@@ -1,0 +1,14 @@
+.products {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.container {
+  padding: 0;
+}
+
+product-card {
+  margin-bottom: 24px;
+}
+

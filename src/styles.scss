@@ -1,0 +1,60 @@
+* {
+  font-family: Arial, sans-serif;
+  margin:0;
+  padding:0
+}
+
+html, body, app-root {
+  height: 100%;
+}
+
+app-root {
+  position: relative;
+}
+
+
+
+footer-component {
+  position:absolute;
+  left: 0;
+  bottom: -60px;
+  width:100%;
+}
+
+.accordion-item {
+  width: 864px;
+  box-sizing: border-box;
+  border: none !important;
+  margin-bottom: 16px;
+  margin-left: 50px;
+
+}
+
+.accordion-button {
+  background: rgb(13, 110, 253) !important;
+  color: white !important;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1;
+  border-radius: 8px !important;
+  padding: 24px !important;
+}
+
+.accordion-body {
+  padding-bottom: 0 !important;
+}
+
+.accordion-button::after {
+  background-image: url("assets/images/next.png") !important;
+}
+.accordion-button:not(.collapsed)::after {
+  background-image: url("assets/images/next.png") !important;
+}
+
+
+
+
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
+

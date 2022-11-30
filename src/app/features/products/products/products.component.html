@@ -1,0 +1,9 @@
+<div class="container">
+  <div class="title fs-2 fw-bold mb-5 text-center">
+    Наши чайные коллекции
+  </div>
+  <div class="products">
+    <product-card *ngFor="let product of products" [product]="product"></product-card>
+  </div>
+</div>
+

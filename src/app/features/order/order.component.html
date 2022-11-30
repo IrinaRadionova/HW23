@@ -1,0 +1,106 @@
+<div class="container">
+  <div class="order pb-2 align-items-center" id="order" *ngIf="createdOrder">
+    <div class="title fs-2 fw-bold mt-4 mb-3 text-center">
+      Сделать заказ
+    </div>
+    <div class="order-form d-flex justify-content-center">
+      <form class="col-lg-6 m-0" [formGroup]="checkoutForm">
+        <div class="mt-3">
+          <label for="productTitle" class="form-label">Товар</label>
+          <input type="text" class="form-control" id="productTitle" formControlName="productTitle">
+        </div>
+        <div class="row mb-3 mt-3">
+          <div class="col-md-4">
+            <label for="name" class="form-label">Имя</label>
+            <input type="text" class="form-control" id="name" formControlName="name">
+            <div *ngIf="checkoutForm.get('name')?.invalid
+          && (checkoutForm.get('name')?.touched || checkoutForm.get('name')?.dirty)">
+              <div class="invalid-feedback" *ngIf="checkoutForm.get('name')?.errors?.['required']">
+                Заполните Имя
+              </div>
+              <div class="invalid-feedback" *ngIf="checkoutForm.get('name')?.errors?.['pattern']">
+                Имя может содержать только буквы
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <label for="lastName" class="form-label">Фамилия</label>
+            <input type="text" class="form-control" id="lastName" formControlName="lastName">
+            <div *ngIf="checkoutForm.get('lastName')?.invalid
+          && (checkoutForm.get('lastName')?.touched || checkoutForm.get('lastName')?.dirty)">
+              <div class="invalid-feedback" *ngIf="checkoutForm.get('lastName')?.errors?.['required']">
+                Заполните фамилию
+              </div>
+              <div class="invalid-feedback" *ngIf="checkoutForm.get('lastName')?.errors?.['pattern']">
+                Фамилия может содержать только буквы
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <label for="phone" class="form-label">Телефон</label>
+            <input type="text" class="form-control" id="phone" formControlName="phone">
+            <div *ngIf="checkoutForm.get('phone')?.invalid
+          && (checkoutForm.get('phone')?.touched || checkoutForm.get('phone')?.dirty)">
+              <div class="invalid-feedback" *ngIf="checkoutForm.get('phone')?.errors?.['required']">
+                Заполните номер телефона
+              </div>
+              <div class="invalid-feedback" *ngIf="checkoutForm.get('phone')?.errors?.['pattern']">
+                Телефон должен содержать 11 цифр
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-md-6">
+            <label for="country" class="form-label">Страна</label>
+            <input type="text" class="form-control" id="country" formControlName="country">
+            <div class="invalid-feedback" *ngIf="checkoutForm.get('country')?.invalid
+          && (checkoutForm.get('country')?.touched || checkoutForm.get('country')?.dirty)
+          && checkoutForm.get('country')?.errors?.['required']">
+              Заполните Страну
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label for="zipCode" class="form-label">Индекс</label>
+            <input type="text" class="form-control" id="zipCode" formControlName="zipCode">
+            <div class="invalid-feedback" *ngIf="checkoutForm.get('zipCode')?.invalid
+          && (checkoutForm.get('zipCode')?.touched || checkoutForm.get('zipCode')?.dirty)
+          && checkoutForm.get('zipCode')?.errors?.['required']">
+              Заполните ваш почтовый индекс
+            </div>
+          </div>
+        </div>
+        <div>
+          <label for="address" class="form-label">Адрес</label>
+          <input type="text" class="form-control" id="address" formControlName="address">
+          <div *ngIf="checkoutForm.get('address')?.invalid
+          && (checkoutForm.get('address')?.touched || checkoutForm.get('address')?.dirty)">
+            <div class="invalid-feedback" *ngIf="checkoutForm.get('address')?.errors?.['required']">
+              Заполните Ваш адрес
+            </div>
+            <div class="invalid-feedback" *ngIf="checkoutForm.get('address')?.errors?.['pattern']">
+              Адрес может состоять из букв, цифр, пробелов, дефисов и слешей,
+            </div>
+          </div>
+        </div>
+        <div class="mt-3">
+          <label for="comment" class="form-label">Комментарий к заказу</label>
+          <input type="text" class="form-control" id="comment" formControlName="comment">
+        </div>
+        <div class="d-flex w-100 justify-content-start align-items-baseline">
+          <button type="button" class="btn btn-primary mt-4 mb-1 px-5 hvr-grow-shadow" id="Send" [disabled]="checkoutForm.invalid"
+                  (click)="createOrder()">Отправить
+          </button>
+          <div class="h6 fw-bold text-danger m-3" *ngIf="orderError">
+            Произошла ошибка. Попробуйте еще раз.
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="ordered" id="ordered" *ngIf="!createdOrder">
+    <div class="title d-flex justify-content-center align-items-center fs-2 fw-bold mt-4 mb-5 text-center order-message">
+      Спасибо за заказ!
+    </div>
+  </div>
+</div>
